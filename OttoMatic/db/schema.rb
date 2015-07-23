@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723030522) do
+ActiveRecord::Schema.define(version: 20150723081439) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "number",     limit: 4,   null: false
@@ -29,13 +29,43 @@ ActiveRecord::Schema.define(version: 20150723030522) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string   "last_name",       limit: 255, null: false
+    t.string   "last_name",       limit: 255,   null: false
     t.string   "first_name",      limit: 255
-    t.string   "primary_phone",   limit: 255, null: false
+    t.string   "primary_phone",   limit: 255,   null: false
     t.string   "secondary_phone", limit: 255
     t.string   "email",           limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.binary   "notes",           limit: 65535
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "state",       limit: 255
+    t.string   "total_time",  limit: 255
+    t.string   "total_labor", limit: 255
+    t.string   "total_parts", limit: 255
+    t.string   "tax",         limit: 255
+    t.string   "total_cost",  limit: 255
+    t.string   "notes",       limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.binary   "request",     limit: 65535
+    t.integer  "customer_id", limit: 4,     null: false
+  end
+
+  create_table "technicians", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer  "time",          limit: 4,     null: false
+    t.string   "notes",         limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.binary   "description",   limit: 65535, null: false
+    t.integer  "technician_id", limit: 4
   end
 
 end
