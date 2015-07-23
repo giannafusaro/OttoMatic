@@ -43,4 +43,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'mysql2'
+  
+  gem 'state_machine', '~> 1.2.0'
 end
