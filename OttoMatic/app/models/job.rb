@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
   has_many :trips
   belongs_to :customer
+  has_and_belongs_to_many :appliances
   state_machine :state, :initial => :requested do
       event :leave_message do
         transition [:parts_pending] => :lmor

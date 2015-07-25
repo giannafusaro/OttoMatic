@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723081439) do
+ActiveRecord::Schema.define(version: 20150725081737) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "number",     limit: 4,   null: false
@@ -26,6 +26,25 @@ ActiveRecord::Schema.define(version: 20150723081439) do
   create_table "addresses_customers", force: :cascade do |t|
     t.integer "address_id",  limit: 4
     t.integer "customer_id", limit: 4
+  end
+
+  create_table "appliances", force: :cascade do |t|
+    t.string   "brand",        limit: 255
+    t.string   "model",        limit: 255
+    t.integer  "serial",       limit: 4
+    t.datetime "purchased_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "appliances_jobs", force: :cascade do |t|
+    t.integer "appliances_id", limit: 4
+    t.integer "jobs_id",       limit: 4
+  end
+
+  create_table "appliances_parts", force: :cascade do |t|
+    t.integer "appliances_id", limit: 4
+    t.integer "parts_id",      limit: 4
   end
 
   create_table "customers", force: :cascade do |t|
@@ -51,6 +70,13 @@ ActiveRecord::Schema.define(version: 20150723081439) do
     t.datetime "updated_at",                null: false
     t.binary   "request",     limit: 65535
     t.integer  "customer_id", limit: 4,     null: false
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.integer  "number",     limit: 4
+    t.decimal  "price",                precision: 5, scale: 2
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   create_table "technicians", force: :cascade do |t|
