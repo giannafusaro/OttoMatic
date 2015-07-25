@@ -1,0 +1,17 @@
+// Place all the styles related to the Site controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-image: url('cream-dust.png')
+}
+
+.logo {
+  padding: 1em;
+}
+
+ul.index, li {
+  padding: 1em;
+  list-style: none;
+  text-decoration: none;
+}
