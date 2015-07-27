@@ -10,8 +10,17 @@ body {
   padding: 1em;
 }
 
-ul.index, li {
-  padding: 1em;
-  list-style: none;
+a {
   text-decoration: none;
+  color: #000;
+  &:hover, &:focus {
+    color: #04486a;
+  }
+}
+
+ul.index, li {
+  padding-left: .3em;
+  list-style: none;
+  font-family: "forum";
+  font-size: 1.5em;
 }
