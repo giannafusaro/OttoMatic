@@ -1,6 +1,18 @@
 <ul class="index">
 
-  <li><%= link_to 'New Service Request', new_job_path, class: '' %></li>
-  <li>Search</li>
-  <li>View Current Jobs</li>
+  <li>
+    <%= link_to new_job_path do %>
+      <i class="fa fa-plus"></i> New service request
+    <% end %>
+  </li>
+  <li>
+    <%= link_to jobs_path do %>
+      <i class="fa fa-search"></i> Search
+    <% end %>
+  </li>
+  <li>
+    <%= link_to jobs_path do %>
+      <i class="fa fa-eye"></i> View current jobs
+    <% end %>
+  </li>
 </ul>
