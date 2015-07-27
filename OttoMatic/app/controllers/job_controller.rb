@@ -6,7 +6,7 @@ class JobController < ApplicationController
     @job = Job.new
   end
   def create
-    
+
   end
   def edit
   end
@@ -14,4 +14,9 @@ class JobController < ApplicationController
   end
   def destroy
   end
+  private
+
+    def post_params
+      params.require(:post).permit(:id, :title, :date, :author, :abstract, :content, :url_title, :img_url)
+    end
 end
