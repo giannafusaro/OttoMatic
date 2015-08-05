@@ -58,4 +58,6 @@ Rails.application.routes.draw do
   resources :jobs
   resources :customers
   resources :trips
+  resources :appliances
+  resources :addresses
 end
