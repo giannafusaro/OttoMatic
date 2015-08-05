@@ -1,0 +1,8 @@
+@mixin order-form() {
+  $class: 'div.form-element.element-';
+  @for $i from 1 through 19{
+    #{$class}#{$i} {
+      order: $i;
+    }
+  }
+}
