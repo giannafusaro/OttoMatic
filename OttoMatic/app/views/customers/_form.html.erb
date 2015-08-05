@@ -1,0 +1,28 @@
+<div class="customer">
+	<%= form_for (@customer ||= @job.customers.new), remote: true do |f| %>
+
+		<div class="heading">
+			<span class="label"><%= f.label :last_name %></span>
+	    <span><%= f.text_field :last_name %></span>
+
+			<span class="label"><%= f.label :first_name %></span>
+			<span><%= f.text_field :first_name %></span>
+
+			<span class="label"><%= f.label :primary_phone %></span>
+			<span><%= f.text_field :primary_phone %></span>
+
+			<span class="label"><%= f.label :secondary_phone %></span>
+			<span><%= f.text_field :secondary_phone %></span>
+
+			<span class="label"><%= f.label :email %></span>
+			<span><%= f.text_field :email %></span>
+
+	    <span class="label"><%= f.label :notes %></span>
+	    <span><%= f.text_area :notes %></span>
+		</div>
+
+		<span><%= f.submit %></span>
+	<% end %>
+	<%= render partial: "addresses/form" %>
+
+</div>
