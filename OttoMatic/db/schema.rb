@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804155223) do
+ActiveRecord::Schema.define(version: 20150805081854) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "number",     limit: 4,   null: false
     t.integer  "apt_number", limit: 4
-    t.string   "street",     limit: 255, null: false
     t.string   "city",       limit: 255, null: false
     t.integer  "zipcode",    limit: 4,   null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "street_1",   limit: 255
+    t.string   "street_2",   limit: 255
   end
 
   create_table "addresses_customers", force: :cascade do |t|
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150804155223) do
     t.datetime "purchased_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "type",         limit: 255
   end
 
   create_table "appliances_jobs", force: :cascade do |t|
@@ -65,22 +66,22 @@ ActiveRecord::Schema.define(version: 20150804155223) do
 
   create_table "jobs", force: :cascade do |t|
     t.string   "state",       limit: 255
-    t.integer  "total_time",  limit: 4
-    t.decimal  "total_labor",               precision: 5, scale: 2
-    t.decimal  "total_parts",               precision: 5, scale: 2
-    t.decimal  "tax",                       precision: 5, scale: 2
-    t.decimal  "total_cost",                precision: 5, scale: 2
+    t.integer  "total_time",  limit: 4,                             default: 0
+    t.decimal  "total_labor",               precision: 5, scale: 2, default: 0.0
+    t.decimal  "total_parts",               precision: 5, scale: 2, default: 0.0
+    t.decimal  "tax",                       precision: 5, scale: 2, default: 0.0
+    t.decimal  "total_cost",                precision: 5, scale: 2, default: 0.0
     t.binary   "notes",       limit: 65535
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                                                      null: false
+    t.datetime "updated_at",                                                      null: false
     t.binary   "request",     limit: 65535
   end
 
   create_table "parts", force: :cascade do |t|
     t.integer  "number",     limit: 8
-    t.decimal  "price",                precision: 5, scale: 2
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.decimal  "price",                precision: 5, scale: 2, default: 0.0
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
   end
 
   create_table "technicians", force: :cascade do |t|
@@ -90,13 +91,14 @@ ActiveRecord::Schema.define(version: 20150804155223) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer  "time",          limit: 4,     null: false
+    t.integer  "time",          limit: 4,     default: 0, null: false
     t.binary   "notes",         limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.binary   "description",   limit: 65535, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.binary   "description",   limit: 65535,             null: false
     t.integer  "technician_id", limit: 4
-    t.integer  "job_id",        limit: 4,     null: false
+    t.integer  "job_id",        limit: 4,                 null: false
+    t.datetime "scheduled_for"
   end
 
 end
