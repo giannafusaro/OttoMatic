@@ -1,0 +1,21 @@
+<div class="address">
+	<div class="heading">
+		<%= form_for (@address ||= @customer.addresses.new), remote: true do |f| %>
+			<span class="label"><%= f.label :number %></span>
+	    <span><%= f.text_field :number %></span>
+
+			<span class="label"><%= f.label :apt_number %></span>
+			<span><%= f.text_field :apt_number %></span>
+
+			<span class="label"><%= f.label :street %></span>
+			<span><%= f.text_field :street %></span>
+
+			<span class="label"><%= f.label :city %></span>
+			<span><%= f.text_field :city %></span>
+
+			<span class="label"><%= f.label :zipcode %></span>
+			<span><%= f.text_field :zipcode %></span>
+		</div>
+		<span><%= f.submit %></span>
+	<% end %>
+</div>
