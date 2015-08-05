@@ -35,6 +35,6 @@ class AddressesController < ApplicationController
   private
 
     def post_params
-      params.require(:address).permit(:id, :number, :apt_number, :street, :city, :zipcode)
+      params.require(:address).permit(:id, :street_1, :street_2, :city, :zipcode)
     end
 end

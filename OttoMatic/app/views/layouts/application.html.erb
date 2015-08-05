@@ -8,8 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= image_tag "logo.png", class: 'logo' %>
-
+  <div class="logo-container">
+    <%= image_tag "logo.png", class: 'logo' %>
+  </div>
 <%= yield %>
 
 </body>

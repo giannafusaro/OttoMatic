@@ -1,21 +1,32 @@
 <div class="trip">
-	<%= form_for (@trip ||= @job.trips.new), remote: true do |f| %>
-
-		<span class="label"><%= f.label :description %></span>
-    <span><%= f.text_area :description %></span>
-
-		<span class="label"><%= f.label :notes %></span>
-		<span><%= f.text_area :notes %></span>
-
-		<span class="label"><%= f.label :time %></span>
-		<span><%= f.text_area :time %></span>
-
-		<span class="label"><%= f.label :technician_id %></span>
-		<span><%= f.text_field :technician_id %></span>
-
-		<span class="label"><%= f.label :job_id %></span>
-		<span><%= f.text_field :job_id %></span>
-
-  	<span><%= f.submit %></span>
-	<% end %>
+  <%= form_for (@trip ||= @job.trips.new), remote: true do |f| %>
+	  <div class="form-element element-4">
+	    <span class="label"><%= f.label :scheduled_for %></span>
+	    <span><%= f.text_field :scheduled_for %></span>
+	  </div>
+	  <ul class="form-element element-5">
+	    <span class="label"><%= f.label :technician %></span>
+			<% Technician.all.each do |tech| %>
+				<li> <%= check_box_tag :technician_id, tech.id %></li>
+				<%= tech.name %>
+			<% end %>
+	  </ul>
+	  <div class="form-element element-9">
+	    <span class="label"><%= f.label :description %></span>
+	    <span><%= f.text_area :description, rows: 10  %></span>
+	  </div>
+	  <div class="form-element">
+	    <span class="label"><%= f.label :notes %></span>
+	    <span><%= f.text_area :notes, rows: 10  %></span>
+	  </div>
+		<div class="form-element element-19">
+			<span class="label"><%= f.label :time %></span>
+			<span><%= f.text_field :time %></span>
+		</div>
+	  <div class="form-element">
+	    <span class="label"><%= f.label :job_id, hidden: true %></span>
+	    <span><%= f.text_field :job_id, hidden: true  %></span>
+	  </div>
+	  <span><%= f.submit %></span>
+  <% end %>
 </div>

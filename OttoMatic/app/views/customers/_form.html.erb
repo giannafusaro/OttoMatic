@@ -1,23 +1,33 @@
 <div class="customer">
 	<%= form_for (@customer ||= @job.customers.new), remote: true do |f| %>
 
-		<div class="heading">
+		<div class='form-element element-10'>
 			<span class="label"><%= f.label :last_name %></span>
 	    <span><%= f.text_field :last_name %></span>
+		</div>
 
+		<div class='form-element element-11'>
 			<span class="label"><%= f.label :first_name %></span>
 			<span><%= f.text_field :first_name %></span>
+		</div>
 
+		<div class='form-element element-15'>
 			<span class="label"><%= f.label :primary_phone %></span>
 			<span><%= f.text_field :primary_phone %></span>
+		</div>
 
+		<div class='form-element element-16'>
 			<span class="label"><%= f.label :secondary_phone %></span>
 			<span><%= f.text_field :secondary_phone %></span>
+		</div>
 
+		<div class='form-element element-17'>
 			<span class="label"><%= f.label :email %></span>
 			<span><%= f.text_field :email %></span>
+		</div>
 
-	    <span class="label"><%= f.label :notes %></span>
+		<div class='form-element element-18'>
+	    <span class="label"><%= f.label :customer_notes %></span>
 	    <span><%= f.text_area :notes %></span>
 		</div>
 

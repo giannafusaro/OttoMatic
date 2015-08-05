@@ -32,6 +32,6 @@ class AppliancesController < ApplicationController
   private
 
     def post_params
-      params.require(:appliance).permit(:id, :brand, :model, :serial, :purchased_at)
+      params.require(:appliance).permit(:id, :brand, :type, :model, :serial, :purchased_at)
     end
 end
