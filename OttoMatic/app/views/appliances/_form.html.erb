@@ -1,0 +1,18 @@
+<div class="appliance">
+	<%= form_for (@appliance ||= @job.appliances.new), remote: true do |f| %>
+	<div class="heading">
+			<span class="label"><%= f.label :brand %></span>
+	    <span><%= f.text_field :brand %></span>
+
+			<span class="label"><%= f.label :model %></span>
+			<span><%= f.text_field :model %></span>
+
+			<span class="label"><%= f.label :serial %></span>
+			<span><%= f.text_field :serial %></span>
+
+			<span class="label"><%= f.label :purchased_at %></span>
+			<span><%= f.text_field :purchased_at %></span>
+	</div>
+	<span><%= f.submit %></span>
+	<% end %>
+</div>
