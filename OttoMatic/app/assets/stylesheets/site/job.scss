@@ -1,0 +1,80 @@
+//////////////////////////////////////
+///////////// Job
+//////////////////////////////////////
+
+
+section.job {
+  margin: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  & > section {
+    width: 50%;
+  }
+}
+
+span.label {
+  display: table;
+  font-family: 'big-john';
+  font-variant: small-caps;
+  font-size: 1.2em;
+  text-transform: lowercase;
+}
+
+button, textarea , input{
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+  font-size: 1.3em;
+  margin-bottom: 0.75em;
+  padding: 0.5em;
+  font-family: 'forum';
+  transition: border-color;
+  box-sizing: border-box;
+  &:focus {
+    border-color: #04486a;
+    border: 1px solid #04486a;
+  }
+}
+
+input[type="submit"] {
+  background-color: #ddd;
+  &:hover, &:focus {
+    box-shadow: inset 0 1px 1px darken(#ddd, 10%);
+    cursor: pointer;
+    background-color: darken(#ddd, 5%);
+  }
+}
+
+div.form-element, ul.form-element,
+ul.form-element li, #dop-calendar {
+  display: inline-block;
+}
+textarea, .long, .long input {
+  width: 100%;
+}
+.short input { width: 30%;}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+form.new_appliance, form.new_customer {
+  margin-right: 4em;
+}
+
+form.new_trip, form.new_address {
+  margin-left: 4em;
+}
+
+ul.form-element.tech{
+  font-size: 1.5em;
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
+}
+
+input[type="checkbox"]:checked{
+  color: #04486a;
+  background-color: #04486a;
+}
