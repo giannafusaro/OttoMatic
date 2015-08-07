@@ -1,38 +1,37 @@
-<div class="customer">
+<section class="customer">
 	<%= form_for (@customer ||= @job.customers.new), remote: true do |f| %>
-
-		<div class='form-element element-10'>
-			<span class="label"><%= f.label :last_name %></span>
+		<h3>customer</h3>
+		<div class="form-element">
+			<span class="label"><%= f.label :last %></span>
 	    <span><%= f.text_field :last_name %></span>
 		</div>
 
-		<div class='form-element element-11'>
-			<span class="label"><%= f.label :first_name %></span>
+		<div class="form-element">
+			<span class="label"><%= f.label :first %></span>
 			<span><%= f.text_field :first_name %></span>
 		</div>
 
-		<div class='form-element element-15'>
-			<span class="label"><%= f.label :primary_phone %></span>
+		<div class="form-element">
+			<span class="label"><%= f.label :cell %></span>
 			<span><%= f.text_field :primary_phone %></span>
 		</div>
 
-		<div class='form-element element-16'>
-			<span class="label"><%= f.label :secondary_phone %></span>
+		<div class="form-element">
+			<span class="label"><%= f.label :home %></span>
 			<span><%= f.text_field :secondary_phone %></span>
 		</div>
 
-		<div class='form-element element-17'>
+		<div class="form-element long">
 			<span class="label"><%= f.label :email %></span>
 			<span><%= f.text_field :email %></span>
 		</div>
 
-		<div class='form-element element-18'>
-	    <span class="label"><%= f.label :customer_notes %></span>
-	    <span><%= f.text_area :notes %></span>
+		<div class="form-element long">
+	    <span class="label"><%= f.label :notes %></span>
+	    <span><%= f.text_area :notes, rows: 2 %></span>
 		</div>
 
-		<span><%= f.submit %></span>
+		<span><%= f.submit class: "button" %></span>
 	<% end %>
-	<%= render partial: "addresses/form" %>
-
-</div>
+</section>
+<%= render partial: "addresses/form" %>

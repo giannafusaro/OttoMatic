@@ -1,32 +1,32 @@
-<div class="appliance">
+<section class="appliance">
+  <h3>appliance</h3>
   <%= form_for (@appliance ||= @job.appliances.new), remote: true do |f| %>
-
-		<div class="form-element element-1">
-      <span class="label"><%= f.label :brand %></span>
-      <span><%= f.text_field :brand %></span>
+  <div class="form-element">
+    <span class="label"><%= f.label :brand %></span>
+    <span><%= f.text_field :brand %></span>
+  </div>
+  <div class="form-element">
+    <span class="label"><%= f.label :type %></span>
+    <span><%= f.text_field :type %></span>
+  </div>
+  <div id="dop-calendar">
+    <div class="form-element input-group input-append date" id="datepicker">
+      <span class="label"><%= f.label :dop %></span>
+      <span><%= f.text_field :purchased_at, class: 'form-control js-timestamp' %></span>
+      <span class="input-group-addon add-on">
+        <i class="fa fa-calendar" data-date-icon="icon-calendar" data-time-icon="icon-time"></i>
+      </span>
     </div>
+  </div>
 
-		<div class="form-element element-2">
-      <span class="label"><%= f.label :type %></span>
-      <span><%= f.text_field :type %></span>
-    </div>
-
-		<div class="form-element element-6">
-      <span class="label"><%= f.label :purchased_at %></span>
-      <span><%= f.text_field :purchased_at %></span>
-    </div>
-    
-		<div class="form-element element-7">
-      <span class="label"><%= f.label :model %></span>
-      <span><%= f.text_field :model %></span>
-    </div>
-
-		<div class="form-element element-8">
-      <span class="label"><%= f.label :serial %></span>
-      <span><%= f.text_field :serial %></span>
-    </div>
-
-
-	<span><%= f.submit %></span>
+  <div class="form-element">
+    <span class="label"><%= f.label :model %></span>
+    <span><%= f.text_field :model %></span>
+  </div>
+  <div class="form-element long">
+    <span class="label"><%= f.label :serial %></span>
+    <span><%= f.text_field :serial %></span>
+  </div>
+  <span><%= f.submit class: "button" %></span>
   <% end %>
-</div>
+</section>
