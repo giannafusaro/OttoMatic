@@ -6,34 +6,8 @@ section.trip {
 ////// datepicker stuff
 //////////////////////////
 #trip-calendar {
-  .timepicker-picker {
-    .timepicker-hour,
-    .timepicker-minute,
-    .separator {
-      font-size: 2em;
-      font-family: 'big-john';
-    }
-    button.button {
-      font-family: 'slim-joe';
-      padding: 0.5em;
-      margin-top: 7px;
-      font-size: 1em;
-      text-shadow: 0 1px 0 #333;
-      font-weight: bolder;
-      background-color: #fff;
-      &:hover,
-      &:focus {
-        background-color: darken(#fff, 5%);
-        cursor: pointer;
-      }
-    }
-  }
+
 }
-#datepicker, #datetimepicker, #dop-calendar {
-  position: relative;
-}
-#trip-calendar {
-  width: 100%;
-  height: 220px;
+#datepicker, #datetimepicker, #dop-calendar, #trip-calendar {
   position: relative;
 }

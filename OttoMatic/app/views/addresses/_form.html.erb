@@ -21,7 +21,7 @@
 			<span><%= f.text_field :street_2 %></span>
 		</div>
 
-
+		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
 		<span><%= f.submit %></span>
 	<% end %>
 </section>

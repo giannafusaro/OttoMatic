@@ -30,7 +30,7 @@
 	    <span class="label"><%= f.label :notes %></span>
 	    <span><%= f.text_area :notes, rows: 2 %></span>
 		</div>
-
+		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
 		<span><%= f.submit class: "button" %></span>
 	<% end %>
 </section>

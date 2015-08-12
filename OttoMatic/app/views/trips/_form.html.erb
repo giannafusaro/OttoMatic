@@ -2,31 +2,31 @@
 <section class="trip">
   <%= form_for (@trip ||= @job.trips.new), remote: true do |f| %>
   <h3>appointment</h3>
-  <div id='trip-calendar'></div>
-  <div class="form-element input-group input-append date" id="datetimepicker">
-    <span class="label"><%= f.label :scheduled_for %></span>
-    <span><%= f.text_field :scheduled_for, class: 'form-control js-timestamp' %></span>
-    <span class="input-group-addon add-on"></span>
+  <div id='trip-calendar' class="form-element">
+    <div class="input-group input-append date" id="datetimepicker">
+      <span class="label"><%= f.label :scheduled_for %></span>
+      <span><%= f.text_field :scheduled_for, class: 'form-control js-timestamp' %></span>
+      <span class="input-group-addon add-on">
+        <i class="fa fa-calendar" data-date-icon="icon-calendar" data-time-icon="icon-time"></i>
+      </span>
+    </div>
   </div>
   <ul class="form-element tech">
     <% Technician.all.each do |tech| %>
-    <li>
-      <%= check_box_tag :technician_id, tech.id %></li>
-    <%= tech.name %>
+      <li>
+        <%= check_box_tag :technician_id, tech.id %>
+        <%= tech.name %>
+      </li>
     <% end %>
   </ul>
-  <div class="form-element long">
-    <span class="label"><%= f.label :complaint %></span>
-    <span><%= f.text_area :description, rows: 2  %></span>
-  </div>
-  <div class="form-element long">
-    <span class="label"><%= f.label :notes %></span>
-    <span><%= f.text_area :notes, rows: 2  %></span>
-  </div>
   <% if controller_action =! "jobs#new" %>
+  <div class="form-element long">
+    <span class="label"><%= f.label :summary %></span>
+    <span><%= f.text_area :summary, rows: 2  %></span>
+  </div>
   <div class="form-element short">
-    <span class="label"><%= f.label :time %></span>
-    <span><%= f.text_field :time %></span>
+    <span class="label"><%= f.label :time_taken %></span>
+    <span><%= f.text_field :time_taken %></span>
   </div>
   <% end %>
   <div class="form-element">
@@ -34,5 +34,6 @@
     <span><%= f.text_field :job_id, hidden: true  %></span>
   </div>
   <span><%= f.submit class: "button" %></span>
+  <input name="authenticity_token" type="hidden">
   <% end %>
 </section>

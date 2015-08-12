@@ -37,7 +37,7 @@ class TripsController < ApplicationController
   private
 
     def post_params
-      params.require(:trip).permit(:id, :technician_id, :job_id, :time, :notes, :description, :scheduled_for)
+      params.require(:trip).permit(:id, :technician_id, :job_id, :time_taken, :summary, :scheduled_for)
 
     end
 

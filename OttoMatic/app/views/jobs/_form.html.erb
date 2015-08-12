@@ -1,3 +1,33 @@
-<div class="job">
-	
-</div>
+<section class="job">
+	<%= form_for (@job ||= @job.new), remote: true do |f| %>
+		<h3>job</h3>
+		<div class="form-element">
+			<span class="label"><%= f.label :total_time %></span>
+	    <span><%= f.text_field :total_time %></span>
+		</div>
+
+		<div class="form-element">
+			<span class="label"><%= f.label :total_labor %></span>
+			<span><%= f.text_field :total_labor %></span>
+		</div>
+
+		<div class="form-element">
+			<span class="label"><%= f.label :total_parts %></span>
+			<span><%= f.text_field :total_parts %></span>
+		</div>
+
+		<div class="form-element">
+			<span class="label"><%= f.label :total_cost %></span>
+			<span><%= f.text_field :total_cost %></span>
+		</div>
+
+		<div class="form-element long">
+			<span class="label"><%= f.label :tax %></span>
+			<span><%= f.text_field :tax %></span>
+		</div>
+
+		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+		<span><%= f.submit class: "button" %></span>
+	<% end %>
+</section>
+<%= render partial: "addresses/form" %>

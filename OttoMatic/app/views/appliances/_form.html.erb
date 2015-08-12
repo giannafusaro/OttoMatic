@@ -2,15 +2,13 @@
   <h3>appliance</h3>
   <%= form_for (@appliance ||= @job.appliances.new), remote: true do |f| %>
   <div class="form-element">
-    <span class="label"><%= f.label :brand %></span>
-    <span><%= f.text_field :brand %></span>
+      <%= f.select(:brand, ['bosch', 'ge','insinkerator', 'kenmore', 'kitchenaid', 'maytag', 'thermador', 'whirlpool'], { include_blank: "select brand..." }) %>
   </div>
   <div class="form-element">
-    <span class="label"><%= f.label :type %></span>
-    <span><%= f.text_field :type %></span>
+      <%= f.select(:kind, ['cooktop', 'dishwasher', 'disposal', 'dryer', 'faucet', 'hood', 'hot water dispenser', 'microwave', 'oven', 'range', 'washer' ], { include_blank: "select appliance..." }) %>
   </div>
-  <div id="dop-calendar">
-    <div class="form-element input-group input-append date" id="datepicker">
+  <div id="dop-calendar" class="form-element">
+    <div class="input-group input-append date" id="datepicker">
       <span class="label"><%= f.label :dop %></span>
       <span><%= f.text_field :purchased_at, class: 'form-control js-timestamp' %></span>
       <span class="input-group-addon add-on">
@@ -27,6 +25,7 @@
     <span class="label"><%= f.label :serial %></span>
     <span><%= f.text_field :serial %></span>
   </div>
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
   <span><%= f.submit class: "button" %></span>
   <% end %>
 </section>

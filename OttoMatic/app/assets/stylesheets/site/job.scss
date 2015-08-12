@@ -11,7 +11,9 @@ section.job {
     width: 50%;
   }
 }
-
+select:first-of-type {
+  font-family: 'forum';
+}
 span.label {
   display: table;
   font-family: 'big-john';
@@ -20,7 +22,7 @@ span.label {
   text-transform: lowercase;
 }
 
-button, textarea , input{
+button, textarea , input, select {
   border: 1px solid #ddd;
   border-radius: 3px;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
@@ -28,8 +30,8 @@ button, textarea , input{
   margin-bottom: 0.75em;
   padding: 0.5em;
   font-family: 'forum';
-  transition: border-color;
   box-sizing: border-box;
+  width: 100%;
   &:focus {
     border-color: #04486a;
     border: 1px solid #04486a;
@@ -45,12 +47,20 @@ input[type="submit"] {
   }
 }
 
+.form-element {
+  flex: 1 45%;
+  &:not(.tech) {
+    padding-right: 1em;
+  }
+
+}
+
 div.form-element, ul.form-element,
 ul.form-element li, #dop-calendar {
   display: inline-block;
 }
 textarea, .long, .long input {
-  width: 100%;
+  flex: 2 100%;
 }
 .short input { width: 30%;}
 
@@ -72,9 +82,40 @@ ul.form-element.tech{
   margin-right: auto;
   margin-left: auto;
   align-self: center;
+  padding-left: 1em;
 }
 
+input[type="checkbox"]{
+  width: 20px;
+}
 input[type="checkbox"]:checked{
   color: #04486a;
   background-color: #04486a;
+}
+
+.gtimepicker-container {
+  display: none;
+  position: absolute;
+  top: -215px;
+  left: 195px;
+  z-index: 99998 !important;
+  border-radius: 4px;
+  font-family: 'forum';
+  background-color: #333;
+  padding: 1em .5em;
+  font-size: 1.5em;
+  color: #ddd;
+  min-height: 170px;
+  min-width: 258px;
+  box-shadow: -2px 2px 10px 0px #333;
+  table {
+    width: 100%;
+    td {
+      width: 30px;
+      height: 34px;
+    }
+  }
+}
+.gtimepicker {
+
 }
