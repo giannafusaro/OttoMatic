@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   $("#new_trip").on("ajax:success", (e, data, status, xhr) ->
-    $("#new_trip").append xhr.responseText
+    $("#new_trip").replaceWith xhr.responseText
   ).on "ajax:error", (e, xhr, status, error) ->
     $("#new_trip").append "<p>ERROR</p>"

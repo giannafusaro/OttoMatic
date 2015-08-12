@@ -275,12 +275,22 @@ THE SOFTWARE.
                 offset.right = 'auto';
                 picker.widget.removeClass('pull-right');
             }
-            picker.widget.css({
-                position: position,
-                top: 0,
-                left: offset.left,
-                right: 0
-            });
+            if(picker.options.posOfWidget=='toLeft') {
+              picker.widget.css({
+                  position: position,
+                  top: -215,
+                  left: 195
+              });
+            }
+            else {
+              picker.widget.css({
+                  position: position,
+                  top: 0,
+                  left: offset.left,
+                  right: 0
+              });
+            }
+
         },
 
         notifyChange = function (oldDate, eventType) {
@@ -471,7 +481,7 @@ THE SOFTWARE.
                 for (i = 0; i < 3; i += 1) {
                     html += '<tr>';
                     for (j = 0; j < 4; j += 1) {
-                        html += '<td class="hour">' + padLeft(current.toString()) + '</td>';
+                        html += '<td class="hour">' + current.toString() + ' - ' + picker.endHourBlock(current).toString() + '</td>';
                         current++;
                     }
                     html += '</tr>';
@@ -524,7 +534,7 @@ THE SOFTWARE.
                 else if (hour != 12) hour = hour % 12;
                 picker.widget.find('.timepicker [data-action=togglePeriod]').text(period);
             }
-            timeComponents.filter('[data-time-component=hours]').text(padLeft(hour));
+            timeComponents.filter('[data-time-component=hours]').text(hour);
             timeComponents.filter('[data-time-component=minutes]').text(padLeft(picker.date.minutes()));
             timeComponents.filter('[data-time-component=seconds]').text(padLeft(picker.date.second()));
         },
@@ -619,6 +629,8 @@ THE SOFTWARE.
 		actions = {
 		    incrementHours: function () {
 		        checkDate("add", "hours", 1);
+            document.getElementsByClassName("timepicker-minute")[0].innerHTML=(picker.endHourBlock(picker.date.hours()));
+
 		    },
 
 		    incrementMinutes: function () {
@@ -631,6 +643,7 @@ THE SOFTWARE.
 
 		    decrementHours: function () {
 		        checkDate("subtract", "hours", 1);
+            document.getElementsByClassName("timepicker-minute")[0].innerHTML=(picker.endHourBlock(picker.date.hours()));
 		    },
 
 		    decrementMinutes: function () {
@@ -672,6 +685,7 @@ THE SOFTWARE.
 		        var period = picker.widget.find('.timepicker [data-action=togglePeriod]').text(), hour = parseInt($(e.target).text(), 10);
 		        if (period == "PM") hour += 12
 		        picker.date.hours(hour);
+            document.getElementsByClassName("timepicker-minute")[0].innerHTML=(picker.endHourBlock(picker.date.hours()));
 		        actions.showPicker.call(picker);
 		    },
 
@@ -914,7 +928,7 @@ THE SOFTWARE.
         getTemplate = function () {
             if (picker.options.pickDate && picker.options.pickTime) {
                 var ret = '';
-                ret = '<div class="bootstrap-datetimepicker-widget' + (picker.options.sideBySide ? ' timepicker-sbs' : '') + ' dropdown-menu" style="z-index:9999 !important;">';
+                ret = '<div id="' + picker.options.pageLocation + '-widget" class="bootstrap-datetimepicker-widget "' + (picker.options.sideBySide ? ' timepicker-sbs' : '') + ' dropdown-menu" style="z-index:9999 !important;">';
                 if (picker.options.sideBySide) {
                     ret += '<div class="row">' +
                        '<div class="col-sm-6 datepicker">' + dpGlobal.template + '</div>' +
@@ -923,7 +937,7 @@ THE SOFTWARE.
                 } else {
                     ret += '<ul class="list-unstyled">' +
                         '<li' + (picker.options.collapse ? ' class="collapse in"' : '') + '>' +
-                            '<div class="datepicker">' + dpGlobal.template + '</div>' +
+                            '<div class="datepicker id="' + picker.options.pageLocation + '-datepicker">' + dpGlobal.template + '</div>' +
                         '</li>' +
                         '<li class="picker-switch accordion-toggle"><a class="btn" style="width:100%"><span class="' + picker.options.icons.time + '"></span></a></li>' +
                         '<li' + (picker.options.collapse ? ' class="collapse"' : '') + '>' +
@@ -935,14 +949,14 @@ THE SOFTWARE.
                 return ret;
             } else if (picker.options.pickTime) {
                 return (
-                    '<div class="bootstrap-datetimepicker-widget dropdown-menu">' +
+                    '<div id = "' + picker.options.pageLocation.substr(1) + '-widget" class="bootstrap-datetimepicker-widget dropdown-menu">' +
                         '<div class="timepicker">' + tpGlobal.getTemplate() + '</div>' +
                     '</div>'
                 );
             } else {
                 return (
-                    '<div class="bootstrap-datetimepicker-widget dropdown-menu">' +
-                        '<div class="datepicker">' + dpGlobal.template + '</div>' +
+                    '<div id="' + picker.options.pageLocation.substr(1) + '-widget" class="bootstrap-datetimepicker-widget dropdown-menu">' +
+                        '<div id="' + picker.options.pageLocation.substr(1) + '-datepicker" class="datepicker">' + dpGlobal.template + '</div>' +
                     '</div>'
                 );
             }
@@ -982,7 +996,7 @@ THE SOFTWARE.
         };
 
         dpGlobal.template =
-            '<div class="datepicker-days">' +
+            '<div id="datepicker-days" class="datepicker-days">' +
                 '<table class="table-condensed">' + dpGlobal.headTemplate + '<tbody></tbody></table>' +
             '</div>' +
             '<div class="datepicker-months">' +
@@ -998,6 +1012,7 @@ THE SOFTWARE.
                     '<table class="table-condensed">' +
 						'<tr>' +
 							'<td class="separator"></td>' +
+              '<td><a href="#" class="btn" data-action="incrementHours"><span class="' + picker.options.icons.up + '"></span></a></td>' +
 							'<td class="separator"></td>' +
 							'<td>' + (picker.options.useMinutes ? '<a href="#" class="btn" data-action="incrementMinutes"><span class="' + picker.options.icons.up + '"></span></a>' : '') + '</td>' +
                             (picker.options.useSeconds ?
@@ -1007,11 +1022,10 @@ THE SOFTWARE.
 						'<tr>' +
 							'<td>' + tpGlobal.hourTemplate + '</td> ' +
 							'<td class="separator">-</td>' +
-							'<td>' + (picker.options.useMinutes ? tpGlobal.minuteTemplate : '<span class="timepicker-minute">00</span>') + '</td> ' +
+							'<td>' + (picker.options.useMinutes ? tpGlobal.minuteTemplate : '<span class="timepicker-minute">' + picker.endHourBlock(picker.date.hours()) + '</span>') + '</td> ' +
                             (picker.options.useSeconds ?
                                 '<td class="separator">:</td><td>' + tpGlobal.secondTemplate + '</td>' : '') +
-							(picker.use24hours ? '' : '<td class="separator"></td>' +
-							'<td><button type="button" class="button" data-action="togglePeriod"></button></td>') +
+							( '' ) +
 						'</tr>' +
 						'<tr>' +
 							'<td class="separator"></td>' +
@@ -1034,6 +1048,17 @@ THE SOFTWARE.
             );
         };
 
+        picker.endHourBlock = function(num) {
+          if ((num+2) > 12) {
+            console.log("number", num);
+            console.log("number+2 - 12", ((num+2)-12));
+            return ((num+2)-12);
+          }
+          else {
+            console.log("num+2", num+2);
+            return (num+2);
+          }
+        };
         picker.destroy = function () {
             detachDatePickerEvents();
             detachDatePickerGlobalEvents();

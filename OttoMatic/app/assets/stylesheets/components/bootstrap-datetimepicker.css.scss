@@ -9,15 +9,16 @@
   border-radius: 4px;
   font-family: 'forum';
 }
-.bootstrap-datetimepicker-widget.timepicker-sbs {
+.bootstrap-datetimepicker-widget.timepicker-sbs{
   width: 100%;
   min-width: 250px;
   display:flex;
   flex-flow: row nowrap;
 }
-.timepicker, .datepicker {
+.datepicker, .datetimepicker {
   display: inline-block;
 }
+
 .bootstrap-datetimepicker-widget.bottom:before {
   content: '';
   display: inline-block;
@@ -29,6 +30,7 @@
   top: -7px;
   left: 7px;
 }
+
 .bootstrap-datetimepicker-widget.bottom:after {
   content: '';
   display: inline-block;
@@ -39,6 +41,7 @@
   top: -6px;
   left: 8px;
 }
+
 .bootstrap-datetimepicker-widget.top:before {
   content: '';
   display: inline-block;
@@ -96,6 +99,8 @@
   width: 100%;
   margin: 0;
 }
+.gtimepicker-container td,
+.gtimepicker-container th,
 .bootstrap-datetimepicker-widget td,
 .bootstrap-datetimepicker-widget th {
   text-align: center;
@@ -103,11 +108,12 @@
   height: 20px;
   border-radius: 4px;
 }
+.gtimepicker td.time-span:hover,
 .bootstrap-datetimepicker-widget td.day:hover,
 .bootstrap-datetimepicker-widget td.hour:hover,
 .bootstrap-datetimepicker-widget td.minute:hover,
 .bootstrap-datetimepicker-widget td.second:hover {
-  background: #eeeeee;
+  background:  lighten(#333, 3%);
   cursor: pointer;
 }
 .bootstrap-datetimepicker-widget td.old,
@@ -153,7 +159,7 @@
   border-radius: 4px;
 }
 .bootstrap-datetimepicker-widget td span:hover {
-  background: #eeeeee;
+  background: lighten(#333, 3%);
 }
 .bootstrap-datetimepicker-widget td span.active {
   background-color: #02486a;
@@ -183,11 +189,12 @@
   color: #999999;
   cursor: not-allowed;
 }
+.gtimepicker td,
 .bootstrap-datetimepicker-widget thead tr:first-child th {
   cursor: pointer;
 }
 .bootstrap-datetimepicker-widget thead tr:first-child th:hover {
-  background: #eeeeee;
+  background: lighten(#333, 3%);
 }
 
 .bootstrap-datetimepicker-widget thead tr:nth-of-type(2) {
@@ -221,18 +228,18 @@
 div.col-sm-6.timepicker {margin-left: 2em;}
 div.col-sm-6.timepicker {width: 240px;}
 
-#dop-calendar .bootstrap-datetimepicker-widget {
+ .bootstrap-datetimepicker-widget {
   background-color: #333;
   min-width: 250px;
   color: #eee;
   padding: 1em;
   box-shadow: -2px 2px 10px 0px #333;
-  span, th, td {
-    &:hover {
+  span, th, .datepicker-days td {
+    &:not(&:active) {
       background-color: lighten(#333, 3%);
     }
   }
-  .datepicker {
+  .datepicker, .datetimepicker {
     display: block;
   }
   .datepicker-months, .datepicker-years > table {
