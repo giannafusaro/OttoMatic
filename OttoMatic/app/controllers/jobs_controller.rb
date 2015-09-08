@@ -3,7 +3,8 @@ class JobsController < ApplicationController
     @jobs = Job.all
   end
   def new
-    @job = Job.create
+    @job = Job.new
+    gon.push({ :zip_codes => ZIP_CODES, :city_names => CITY_NAMES, :cities => CITIES })
   end
   def create
     @job = Job.create post_params

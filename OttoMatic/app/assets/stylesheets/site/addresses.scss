@@ -1,3 +1,18 @@
 section.address {
   order: 2;
 }
+div.tt-menu {
+  top: 75% !important;
+  font-size: 1.3em;
+  font-family: 'forum';
+  width: 100%;
+  box-shadow: inset 0 1px 1px darken(#ddd, 10%);
+  cursor: pointer;
+  background: #f9f9f9;
+}
+.tt-suggestion {
+  padding: .5em .5em;
+  &:hover {
+    background: darken(#f9f9f9, 10%);
+  }
+}
