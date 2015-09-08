@@ -1,0 +1,29 @@
+no bake,oven
+no broil,oven
+won't self-clean,oven
+won't start,disposal
+noisy,disposal
+won't turn off,disposal
+waste remains,disposal
+odor,disposal
+leaks,disposal
+won't drain,disposal
+won't fill,dishwasher
+dead unit,dishwasher
+smells,dishwasher
+leaks,dishwasher
+won't dry,dryer
+no hot water,hot water dispenser
+water not hot enough,hot water dispenser
+smells,hot water dispenser
+bad taste,hot water dispenser
+leaks,hot water dispenser
+water flow problem,hot water dispenser
+noisy,hot water dispenser
+water comes out vent,hot water dispenser
+clicks,range
+gas smell,range
+won't self-clean,range
+won't spin,washer
+leaks,washer
+leaks,faucet
