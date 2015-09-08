@@ -2,8 +2,26 @@ class Job < ActiveRecord::Base
   has_many :trips
   has_and_belongs_to_many :customers
   has_and_belongs_to_many :appliances
-  accepts_nested_attributes_for :appliances
-  accepts_nested_attributes_for :customers
+  has_many :addresses, through: :customers
+  validates :state, presence: true
+  validates :total_time, :total_cost, :total_labor, :total_parts, :tax, numericality: true
+
+  
+  TRIP_CHARGE_PENINSULA = 92.50
+  TRIP_CHARGE_EAST_BAY = 105.00
+  SERVICE_RATE_PER_HOUR = 80.00
+
+  EAST_BAY_CITIES =
+  [ "Kensington", "Berkeley", "Albany", "Emeryville", "Oakland", "Piedmont",
+    "Alameda", "San Lorenzo", "San Leandro", "Castro Valley", "Newark",
+    "Hayward", "Union City", "Fremont" ]
+
+  def trip_charge
+    city_name = self.customers[0].addresses[0].city
+    EAST_BAY_CITIES.include?(city_name) ? TRIP_CHARGE_EAST_BAY : TRIP_CHARGE_PENINSULA
+  end
+
+
 
   # state_machine :state, :initial => :requested do
   #     event :leave_message do
