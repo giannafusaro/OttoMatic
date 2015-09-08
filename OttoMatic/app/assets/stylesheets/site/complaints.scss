@@ -1,0 +1,24 @@
+div#common-complaints {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+a.complaint-tag{
+	border-radius: 4px;
+	padding: .5em .5em;
+	margin: .5em 0em;
+	&:hover {
+		background-color: darken(#eee, 5%);
+	}
+}
+div #common-complaints > i, h5 {
+	display: inline;
+	font-size: 1.5em;
+	font-family: 'forum';
+}
+
+#common-complaints .selected {
+	background-color: #04486a;
+	font: #ddd;
+}

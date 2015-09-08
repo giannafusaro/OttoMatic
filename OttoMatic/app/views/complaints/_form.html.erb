@@ -1,0 +1,7 @@
+<%= form_for (@complaint ||= Complaint.new), remote: true do |f| %>
+  <h3>add complaint</h3>
+  <div class='form-element'>
+    <span class="label"><%= f.label :complaint %></span>
+    <span><%= f.text_area :complaint %></span>
+  </div>
+<% end %>

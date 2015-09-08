@@ -31,8 +31,10 @@
   <% end %>
   <div class="form-element">
     <span class="label"><%= f.label :job_id, hidden: true %></span>
-    <span><%= f.text_field :job_id, hidden: true  %></span>
+    <span><%= f.text_field :job_id, hidden: true %></span>
   </div>
+  <div id="common-complaints"></div>
+  <div class="error-message"></div>
   <span><%= f.submit class: "button" %></span>
   <input name="authenticity_token" type="hidden">
   <% end %>

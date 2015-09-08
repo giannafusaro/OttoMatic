@@ -60,4 +60,6 @@ Rails.application.routes.draw do
   resources :trips
   resources :appliances
   resources :addresses
+  resources :complaints
+  get '/common-complaints/:appliance_type' => 'complaints#common_complaints', as: :common_complaints
 end
