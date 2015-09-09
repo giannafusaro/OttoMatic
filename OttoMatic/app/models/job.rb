@@ -1,12 +1,13 @@
 class Job < ActiveRecord::Base
   has_many :trips
+  belongs_to :address
   has_and_belongs_to_many :customers
   has_and_belongs_to_many :appliances
   has_many :addresses, through: :customers
   validates :state, presence: true
   validates :total_time, :total_cost, :total_labor, :total_parts, :tax, numericality: true
 
-  
+
   TRIP_CHARGE_PENINSULA = 92.50
   TRIP_CHARGE_EAST_BAY = 105.00
   SERVICE_RATE_PER_HOUR = 80.00
