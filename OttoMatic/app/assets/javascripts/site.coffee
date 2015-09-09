@@ -41,5 +41,8 @@ $(document).ready ->
       viewMode: 'months',
       showClose: true,
       posOfWidget: 'toRight'
-    $('#datepicker').data("DateTimePicker").widget.hide()
-    $('#datetimepicker').data("DateTimePicker").widget.hide()
+
+    if $('#datetimepicker')[0] != undefined
+      $('#datetimepicker').data("DateTimePicker").widget.hide()
+    if $('#datepicker')[0] != undefined
+      $('#datepicker').data("DateTimePicker").widget.hide()

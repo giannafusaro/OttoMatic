@@ -28,6 +28,7 @@ $(document).ready ->
   $('#trip-calendar').append html
 
   $('#trip-calendar .datepicker .table-condensed').on "click", 'td.day', (event) ->
+    console.log "whatttt"
     $('.gtimepicker-container').show()
 
 

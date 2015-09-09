@@ -26,7 +26,7 @@ $(document).ready ->
       $('.address_city').val(gon.cities[matches[0]])
       cb matches
 
-  $('.form-element .typeahead').typeahead {
+  $('.form-element .typeahead.zip-code').typeahead {
   hint: true
   highlight: true
   minLength: 1
