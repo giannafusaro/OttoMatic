@@ -1,27 +1,25 @@
-<section class="address">
-	<%= form_for (@address ||= @customer.addresses.new), remote: true do |f| %>
-		<h3>location</h3>
-		<div class='form-element'>
-			<span class="label"><%= f.label :zip %></span>
-			<span><%= f.text_field :zipcode, class: "typeahead" %></span>
-		</div>
+<%= form_for (@address ||= @customer.addresses.new), remote: true do |f| %>
+<h3>location</h3>
+<div class='form-element'>
+  <span class="label"><%= f.label :zip %></span>
+  <span><%= f.text_field :zipcode, class: "typeahead zip-code" %></span>
+</div>
 
-		<div class='form-element'>
-			<span class="label"><%= f.label :city %></span>
-			<span><%= f.text_field :city %></span>
-		</div>
+<div class='form-element'>
+  <span class="label"><%= f.label :city %></span>
+  <span><%= f.text_field :city %></span>
+</div>
 
-		<div class='form-element long'>
-			<span class="label"><%= f.label :address %></span>
-	    <span><%= f.text_field :street_1 %></span>
-		</div>
+<div class='form-element long'>
+  <span class="label"><%= f.label :address %></span>
+  <span><%= f.text_field :street_1 %></span>
+</div>
 
-		<div class='form-element long'>
-			<span class="label"><%= f.label :address %></span>
-			<span><%= f.text_field :street_2 %></span>
-		</div>
+<div class='form-element long'>
+  <span class="label"><%= f.label :address %></span>
+  <span><%= f.text_field :street_2 %></span>
+</div>
 
-		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
-		<span><%= f.submit %></span>
-	<% end %>
-</section>
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+<span><%= f.submit "save address", class: "button" %></span>
+<% end %>

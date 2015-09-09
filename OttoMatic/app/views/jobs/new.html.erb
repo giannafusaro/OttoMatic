@@ -1,7 +1,21 @@
 <h1>service request</h1>
 <section class="job">
-		<%= render partial: "appliances/form" %>
-		<%= render partial: "customers/form" %>
-		<%= render partial: "trips/form" %>
+	<div class="form-element">
+		<span class="label"><%= label_tag :search %></span>
+		<span><%= text_field_tag :customer_search, nil, placeholder: "start typing to search...", class: 'typeahead customer' %></span>
 	</div>
+	<!-- <%= form_for (@job ||= @job.new), remote: true do |f| %>
+  <%= render partial: "customers/form" %>
+  <%= render partial: "addresses/form" %>
+  <% end %> -->
+  <h3>appointment</h3>
+  <div class="form-element" id='trip-calendar'>
+    <div class="input-group input-append date" id="datetimepicker">
+      <span class="label"><%= label_tag :scheduled_for %></span>
+      <span><%= text_field_tag :trip_scheduled_for, nil, { class: 'form-control js-timestamp' } %></span>
+      <span class="input-group-addon add-on">
+        <i class="fa fa-calendar" data-date-icon="icon-calendar" data-time-icon="icon-time"></i>
+      </span>
+    </div>
+  </div>
 </section>

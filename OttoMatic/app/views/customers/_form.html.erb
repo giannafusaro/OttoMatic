@@ -1,37 +1,34 @@
-<section class="customer">
-	<%= form_for (@customer ||= @job.customers.new), remote: true do |f| %>
-		<h3>customer</h3>
-		<div class="form-element">
-			<span class="label"><%= f.label :last %></span>
-	    <span><%= f.text_field :last_name %></span>
-		</div>
+<%= form_for (@customer ||= @job.customers.new), remote: true do |f| %>
+<h3>customer</h3>
+<div class="form-element">
+  <span class="label"><%= f.label :last %></span>
+  <span><%= f.text_field :last_name %></span>
+</div>
 
-		<div class="form-element">
-			<span class="label"><%= f.label :first %></span>
-			<span><%= f.text_field :first_name %></span>
-		</div>
+<div class="form-element">
+  <span class="label"><%= f.label :first %></span>
+  <span><%= f.text_field :first_name %></span>
+</div>
 
-		<div class="form-element">
-			<span class="label"><%= f.label :cell %></span>
-			<span><%= f.text_field :primary_phone %></span>
-		</div>
+<div class="form-element">
+  <span class="label"><%= f.label :cell %></span>
+  <span><%= f.text_field :primary_phone %></span>
+</div>
 
-		<div class="form-element">
-			<span class="label"><%= f.label :home %></span>
-			<span><%= f.text_field :secondary_phone %></span>
-		</div>
+<div class="form-element">
+  <span class="label"><%= f.label :home %></span>
+  <span><%= f.text_field :secondary_phone %></span>
+</div>
 
-		<div class="form-element long">
-			<span class="label"><%= f.label :email %></span>
-			<span><%= f.text_field :email %></span>
-		</div>
+<div class="form-element long">
+  <span class="label"><%= f.label :email %></span>
+  <span><%= f.text_field :email %></span>
+</div>
 
-		<div class="form-element long">
-	    <span class="label"><%= f.label :notes %></span>
-	    <span><%= f.text_area :notes, rows: 2 %></span>
-		</div>
-		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
-		<span><%= f.submit class: "button" %></span>
-	<% end %>
-</section>
-<%= render partial: "addresses/form" %>
+<div class="form-element long">
+  <span class="label"><%= f.label :notes %></span>
+  <span><%= f.text_area :notes, rows: 2 %></span>
+</div>
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+<span><%= f.submit "save customer", class: "button" %></span>
+<% end %>
