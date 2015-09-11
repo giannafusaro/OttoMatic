@@ -32,6 +32,10 @@ class AddressesController < ApplicationController
   def destroy
   end
 
+  def search
+    render json: Address.search_for_matches(params[:term])
+  end
+
   private
 
     def post_params

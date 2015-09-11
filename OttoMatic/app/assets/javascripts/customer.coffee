@@ -14,11 +14,11 @@ $(document).ready ->
     datumTokenizer: (datum) ->
       return Bloodhound.tokenizers.whitespace datum.value
     queryTokenizer: Bloodhound.tokenizers.nonword
-    identify: (obj) -> obj.customer_id
+    identify: (obj) -> obj.label
     remote:
-      url: "/matching-terms"
+      url: "/search"
       prepare: (query, settings) ->
-        settings.url = "/matching-terms?term=#{query.replace(punkChars, '')}"
+        settings.url = "/search?term=#{query.replace(punkChars, '')}"
       transform: (customers) ->
         $.map customers, (customer) ->
           return {
@@ -38,7 +38,6 @@ $(document).ready ->
   },
     displayKey: 'value'
     source: customers.ttAdapter()
-    limit: 20
     templates: {
       footer: Handlebars.compile("<div id='search-new-customer' class='tt-suggestion tt-selectable'><span><i class='fa fa-user-plus'></i> add customer<span></div>")
     }

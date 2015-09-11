@@ -34,13 +34,6 @@ class CustomersController < ApplicationController
   def destroy
   end
 
-  def matching_terms
-    # @results = Customer.terms_for(params[:prefix])
-    # render html: render_to_string('matching_terms')
-    logger.debug Customer.terms_for(params[:term])
-    render json: Customer.terms_for(params[:term])
-  end
-
   private
 
     def post_params
