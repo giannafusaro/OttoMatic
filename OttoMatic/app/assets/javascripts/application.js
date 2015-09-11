@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.min
+//= require handlebars
 //= require typeahead
 //= require moment
 //= require bootstrap-datetimepicker

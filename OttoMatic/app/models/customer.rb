@@ -11,7 +11,7 @@ class Customer < ActiveRecord::Base
         info = c.hash_for_search
         info.each do |entry|
           key = entry[:search_customer]
-          1.upto(key.length - 1) do |n|
+          3.upto(key.length - 1) do |n|
             prefix = key[0, n]
             REDIS.set "search-customer:#{prefix.downcase}", entry.except(:search_customer).to_json
           end
@@ -19,11 +19,9 @@ class Customer < ActiveRecord::Base
       end
     end
     def self.terms_for(prefix)
-      return REDIS.scan_each(:match => "search-customer:*#{prefix}*").inject([]) do |memo, key|
+      ret = REDIS.scan_each(:match => "search-customer:*#{prefix.downcase}*").inject([]) do |memo, key|
         memo << JSON.parse(REDIS.get(key))
-      end
-      # REDIS.sscan "search-customer:#{prefix.downcase}", 0, 9
-      # sscan myset 0 match f*
+      end.uniq
     end
 
 # return an array containing perhaps multiple hashes for one customer

@@ -1,3 +1,22 @@
 section.customer {
   order: 3;
 }
+section.search {
+
+}
+.input-addon {
+  z-index: 10;
+}
+#search-new-customer {
+  font-variant: small-caps;
+  font-family: 'big-john';
+}
+.twitter-typeahead {
+  width: 100%;
+}
+.search-container {
+  position: relative;
+  width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}

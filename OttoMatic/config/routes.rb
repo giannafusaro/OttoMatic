@@ -63,4 +63,5 @@ Rails.application.routes.draw do
   resources :complaints
   get '/common-complaints/:appliance_type' => 'complaints#common_complaints', as: :common_complaints
   get '/step-one' => 'jobs#step_one', as: :step_one
+  match '/matching-terms', to: 'customers#matching_terms', via: :get
 end

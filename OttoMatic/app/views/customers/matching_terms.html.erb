@@ -1,0 +1,3 @@
+<%= @results.each do |result| %>
+  <%= render partial: "matching_term", locals: { result: result } %>
+<% end %>

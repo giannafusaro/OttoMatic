@@ -9,6 +9,9 @@ class JobsController < ApplicationController
   def create
     @job = Job.create post_params
   end
+  def step_one
+
+  end
   def edit
   end
   def update
