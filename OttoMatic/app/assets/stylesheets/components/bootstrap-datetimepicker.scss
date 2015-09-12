@@ -203,14 +203,16 @@
 .input-group.date .input-group-addon span, .input-addon {
   display: block;
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+
 }
 .input-group-addon.add-on, .input-addon {
 
   position: absolute;
-  top: 33px;
-  right: 13px;
+  text-align: center;
+  right: 0px;
+  border: solid 1px transparent;
+  top: 19px;
+  padding: .8em;
 
 }
 .bootstrap-datetimepicker-widget.left-oriented:before {

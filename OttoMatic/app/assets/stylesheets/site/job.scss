@@ -69,13 +69,13 @@ form {
   justify-content: space-between;
   flex-flow: row wrap;
 }
-form.new_appliance, form.new_customer {
-  margin-right: 4em;
-}
-
-form.new_trip, form.new_address {
-  margin-left: 4em;
-}
+// form.new_appliance, form.new_customer {
+//   margin-right: 4em;
+// }
+//
+// form.new_trip, form.new_address {
+//   margin-left: 4em;
+// }
 
 ul.form-element.tech{
   font-size: 1.2em;

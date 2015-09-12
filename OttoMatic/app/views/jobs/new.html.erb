@@ -1,12 +1,19 @@
 <h1>service request</h1>
 <section class="job">
-	<div class="form-element" id="customer-search">
-		<div class="search-container">
-			<span class="label"><%= label_tag :search %></span>
-			<span class="input-addon"><i class='fa fa-user-plus' data-icon="icon-add-customer"></i></span>
-			<%= text_field_tag :customer_search, nil, placeholder: "start typing to search...", class: 'typeahead' %>
-		</div>
-	</div>
+  <div class="form-element" id="customer-search">
+    <div class="search-container">
+      <span class="label"><%= label_tag :search %></span>
+      <span class="input-addon">
+        <i class='fa fa-user-plus' data-icon="icon-add-customer" id="add-customer-icon"></i>
+      </span>
+      <%= text_field_tag :customer_search, nil, placeholder: "start typing to search...", class: 'typeahead' %>
+    </div>
+			<div class="customer-form-container">
+				<span class="icon-container"><i class="fa fa-close"></i></span>
+				<%= render 'customers/new' %>
+				<%= button_tag 'submit', class: 'customer-address-submit' %>
+			</div>
+  </div>
 
   <h3>appointment</h3>
   <div class="form-element" id='trip-calendar'>

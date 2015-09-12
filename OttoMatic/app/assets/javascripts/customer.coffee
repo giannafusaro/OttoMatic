@@ -45,3 +45,13 @@ $(document).ready ->
   telem.bind 'typeahead:select', (ev, suggestion) ->
     telem.data 'customer_id', suggestion.customer_id
     telem.data 'address_id', suggestion.address_id
+
+  $(document).on "click", 'span.icon-container', (ev) ->
+    $("#customer-search.form-element.active").toggleClass( 'active')
+    $('.customer-form-container.active').toggleClass( 'active')
+
+  $(document).on "click", '.input-addon', (ev) ->
+    $("#customer-search.form-element").toggleClass( 'active')
+    $('.customer-form-container').toggleClass( 'active')
+
+  $(document).on "click", '.customer-address-submit', (ev) ->

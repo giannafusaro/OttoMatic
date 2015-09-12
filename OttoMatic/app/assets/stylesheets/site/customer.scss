@@ -1,7 +1,91 @@
+$blue: #04486a;
 section.customer {
   order: 3;
 }
-section.search {
+// parent container of search-container and customer-form-container
+#customer-search.form-element {
+  position: relative;
+  &:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    content: '';
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+}
+#customer-search.form-element.active {
+  &:before {
+    opacity: 1;
+    z-index: 10;
+  }
+}
+.customer-form-container {
+  opacity: 0;
+}
+.customer-form-container.active {
+  opacity: 1;
+  padding: 1em 2em;
+  background-color: #fff;
+  box-shadow: inset 0 1px rgba(0, 0, 0, .1), 0px 0px 1px rgba(0,0,0,.1);
+  position: absolute;
+  width: 60%;
+  right: 210px;
+  top: -6em;
+  z-index: 15;
+  span.icon-container {
+    position: absolute;
+    font-size: 1.5em;
+    right: 0;
+    top: 0;
+    padding: .5em 1em;
+    transition: all 0.7s;
+    height: 1em;
+    width: 1em;
+    &:hover {
+      cursor: pointer;
+      &:before {
+        content: '[';
+        position: absolute;
+        left: 5px;
+      }
+      &:after {
+        content: ']';
+        position: absolute;
+        right: 10px;
+      }
+    }
+  }
+
+  h1 {
+    color: $blue;
+    padding: 0em 0em 1em 0em;
+    margin-top: .5em;
+    text-shadow: 0px 1px 0px #04486a;
+  }
+  .form-element {
+    padding: 0em 0.5em;
+    label {
+      color: #333;
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+  }
+  #new_customer .button, #new_address .button {
+    display: none;
+  }
+  .customer-address-submit {
+    background-color: $blue;
+    color: #fff;
+    font-family: 'slim-joe';
+    font-size: xx-large;
+    font-variant: small-caps;
+  }
 
 }
 .input-addon {
@@ -20,3 +104,25 @@ section.search {
   margin-left: auto;
   margin-right: auto;
 }
+
+.input-addon {
+  transition: all 0.3s;
+  &:hover {
+    color: #fff;
+    border: #ddd solid 1px;
+    @include radial-gradient(lighten(#04486a, 5%), #04486a);
+  }
+}
+
+#add-customer-icon {
+
+}
+
+
+// @include transform(translateZ(50px));
+// @include transform-origin(center top);
+// @include transform-style(preserve-3d);
+// @include transition-property(transform);
+// @include transition-duration(5.0s);
+// @include transition-timing-function(ease-in);
+// @include transition-delay(0.5s);

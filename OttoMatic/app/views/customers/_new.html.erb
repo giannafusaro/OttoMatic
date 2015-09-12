@@ -1,0 +1,11 @@
+<section class="customer">
+	<h1>NEW CUSTOMER</h1>
+
+		<%= form_for @customer = Customer.new do |f| %>
+			<%= render partial: "customers/form", locals: { f: f } %>
+			<%= form_for @customer.addresses.new do |f| %>
+				<%= render partial: "addresses/form", locals: { f: f } %>
+			<% end %>
+		<% end %>
+
+</section>

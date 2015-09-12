@@ -1,5 +1,4 @@
 <%= form_for (@address ||= @customer.addresses.new), remote: true do |f| %>
-<h3>location</h3>
 <div class='form-element'>
   <span class="label"><%= f.label :zip %></span>
   <span><%= f.text_field :zipcode, class: "typeahead zip-code" %></span>
